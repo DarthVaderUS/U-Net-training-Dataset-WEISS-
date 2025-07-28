@@ -28,7 +28,7 @@ def train():
     criterion = nn.BCEWithLogitsLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
-    num_epochs = 40
+    num_epochs = 100
     train_losses = []
     val_losses = []
     val_dices = []
@@ -68,7 +68,7 @@ def train():
 
         print(f"Epoch [{epoch+1}/{num_epochs}] Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} | Val Dice: {avg_val_dice:.4f}")
 
-        if (epoch + 1) % 5 == 0:
+        if (epoch + 1) % 20 == 0:
             torch.save(model.state_dict(), f"unet_model_epoch{epoch+1}.pth")
 
     # Plot and save metrics
